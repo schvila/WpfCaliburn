@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using WpfCaliburn.Models;
+using System.Threading;
 
 namespace WpfCaliburn.ViewModels
 {
@@ -81,11 +83,18 @@ namespace WpfCaliburn.ViewModels
 			LastName = "";
 		}
 
-		public void LoadPageOne()
+		public async Task  LoadPageOne()
 		{
 			//ActivateItem(new SecondChildViewModel());
-			//await ActivateItemAsync(new SecondChildViewModel());
+			await ActivateItemAsync(new FirstChildViewModel(), CancellationToken.None);
+			
 		}
-	
+		public async Task LoadPageTwo()
+		{
+			//ActivateItem(new SecondChildViewModel());
+			await ActivateItemAsync(new SecondChildViewModel(), CancellationToken.None);
+
+		}
+
 	}
 }
